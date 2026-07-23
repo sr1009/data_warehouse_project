@@ -4,3 +4,7 @@
 ### Silver Layer Transformations
 <img width="987" height="606" alt="image" src="https://github.com/user-attachments/assets/f503402f-822d-431b-98cf-d97b54ef4863" />
 
+### Gold Layer tables
+<img width="1097" height="652" alt="image" src="https://github.com/user-attachments/assets/9b609a5e-6905-4af0-802f-80ba93cd7e4e" />
+
+
