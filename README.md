@@ -94,6 +94,9 @@ sql-data-warehouse/
 
 # 🎯 Skills Demonstrated
 
+### Gold Layer tables
+<img width="1097" height="652" alt="image" src="https://github.com/user-attachments/assets/9b609a5e-6905-4af0-802f-80ba93cd7e4e" />
+
 This project demonstrates practical experience in:
 
 - SQL Development
@@ -107,7 +110,6 @@ This project demonstrates practical experience in:
 - Data Analytics
 - Query Optimization
 
-### Gold Layer tables
-<img width="1097" height="652" alt="image" src="https://github.com/user-attachments/assets/9b609a5e-6905-4af0-802f-80ba93cd7e4e" />
+
 
 
