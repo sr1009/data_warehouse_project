@@ -101,6 +101,22 @@ The Gold layer follows a **Star Schema** consisting of:
 
 ---
 
+## Challenges & Solutions
+
+- **Duplicate Customer Records:** Used `ROW_NUMBER()` to identify duplicates and retain only the latest customer record.
+
+- **Data Standardization:** Cleaned and standardized customer names, gender, marital status, and country values using `TRIM()`, `UPPER()`, and `CASE` statements.
+
+- **Data Quality Issues:** Handled missing, invalid, and inconsistent data by replacing nulls, correcting sales calculations, validating dates, and assigning default values where appropriate.
+
+- **Data Integration:** Merged CRM and ERP datasets by transforming and matching business keys to create a unified analytical model.
+
+- **Product History Management:** Used the `LEAD()` window function to derive product end dates and identify active products.
+
+- **Analytics-Ready Modeling:** Built a Star Schema with dimension and fact views in the Gold layer to support efficient reporting and business analysis.
+
+---
+
 # 🎯 Skills Demonstrated
 
 This project demonstrates practical experience in:
