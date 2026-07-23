@@ -1,5 +1,5 @@
 
-# 📊 SQL Data Warehouse & Analytics Project
+# 📊 SQL Data Warehouse Project
 
 ## Overview
 
