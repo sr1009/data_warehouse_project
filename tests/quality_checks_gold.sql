@@ -1,51 +1,55 @@
 /*
 ===============================================================================
-Quality Checks
+quality checks
 ===============================================================================
-Script Purpose:
-    This script performs quality checks to validate the integrity, consistency, 
-    and accuracy of the Gold Layer. These checks ensure:
-    - Uniqueness of surrogate keys in dimension tables.
-    - Referential integrity between fact and dimension tables.
-    - Validation of relationships in the data model for analytical purposes.
+purpose:
+    runs a set of validation queries to confirm the gold layer is clean,
+    consistent, and correctly linked. these checks help verify:
+    - surrogate keys in dimensions are unique
+    - fact tables properly reference dimension keys
+    - relationships in the model behave as expected for analytics
 
-Usage Notes:
-    - Investigate and resolve any discrepancies found during the checks.
+notes:
+    review any rows returned by these checks — they indicate issues that
+    should be fixed before downstream reporting.
 ===============================================================================
 */
 
 -- ====================================================================
--- Checking 'gold.dim_customers'
+-- gold.dim_customers
 -- ====================================================================
--- Check for Uniqueness of Customer Key in gold.dim_customers
--- Expectation: No results 
-SELECT 
+-- verify customer_key is unique in the customer dimension
+-- expected: no rows returned
+select 
     customer_key,
-    COUNT(*) AS duplicate_count
-FROM gold.dim_customers
-GROUP BY customer_key
-HAVING COUNT(*) > 1;
+    count(*) as duplicate_count
+from gold.dim_customers
+group by customer_key
+having count(*) > 1;
 
 -- ====================================================================
--- Checking 'gold.product_key'
+-- gold.dim_products
 -- ====================================================================
--- Check for Uniqueness of Product Key in gold.dim_products
--- Expectation: No results 
-SELECT 
+-- verify product_key is unique in the product dimension
+-- expected: no rows returned
+select 
     product_key,
-    COUNT(*) AS duplicate_count
-FROM gold.dim_products
-GROUP BY product_key
-HAVING COUNT(*) > 1;
+    count(*) as duplicate_count
+from gold.dim_products
+group by product_key
+having count(*) > 1;
 
 -- ====================================================================
--- Checking 'gold.fact_sales'
+-- gold.fact_sales
 -- ====================================================================
--- Check the data model connectivity between fact and dimensions
-SELECT * 
-FROM gold.fact_sales f
-LEFT JOIN gold.dim_customers c
-ON c.customer_key = f.customer_key
-LEFT JOIN gold.dim_products p
-ON p.product_key = f.product_key
-WHERE p.product_key IS NULL OR c.customer_key IS NULL  
+-- check referential integrity between fact_sales and its dimensions
+-- any rows returned indicate missing or mismatched dimension keys
+select *
+from gold.fact_sales f
+left join gold.dim_customers c
+    on c.customer_key = f.customer_key
+left join gold.dim_products p
+    on p.product_key = f.product_key
+where p.product_key is null
+   or c.customer_key is null;
+
