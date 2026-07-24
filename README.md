@@ -1,5 +1,5 @@
 
-# 📊 SQL Data Warehouse Project
+# 📊 SQL Data Warehouse using Medallion Architecture
 
 ## Overview
 
